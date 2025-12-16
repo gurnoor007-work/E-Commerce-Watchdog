@@ -5,6 +5,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+chrome_options = Options()
+chrome_options.add_argument("--headless=new")
 
 import time
 import os
@@ -17,7 +20,7 @@ query = input(Fore.CYAN + Style.BRIGHT + "Enter your query: ")
 print(Style.RESET_ALL)
 URL = f"https://www.amazon.in/s?k={query}&page=1"
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome(options=chrome_options)
 driver.get(url=URL)
 
 #Get the product box HTML

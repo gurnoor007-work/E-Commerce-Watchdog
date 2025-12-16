@@ -5,6 +5,10 @@ import re
 from urllib.parse import urljoin
 import pandas as pd
 import retrieving_HTML
+import time
+from colorama import Fore, init, Style
+init(autoreset=True)
+time.sleep(2)
 
 #make a function to formate price_str
 def price_format(price_str: str):
@@ -52,6 +56,18 @@ for product_n in range(1, len(os.listdir('raw_html')) + 1):
             LINK.append(final_url)
         except:
             LINK.append(None)
+
+print("")
+print(Fore.GREEN + "->" + Style.RESET_ALL + "Names Retrieved")
+time.sleep(1)
+print(Fore.GREEN + "->" + Style.RESET_ALL + "Prices Retrieved")
+time.sleep(1)
+print(Fore.GREEN + "->" + Style.RESET_ALL + "Ratings Retrieved")
+time.sleep(1)
+print(Fore.GREEN + "->" + Style.RESET_ALL + "Links Retrieved")
+time.sleep(1)
+print("Data retrieved, check result.csv")
+time.sleep(2)
 
 
 data = {
