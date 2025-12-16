@@ -4,6 +4,7 @@ import os
 import re
 from urllib.parse import urljoin
 import pandas as pd
+import retrieving_HTML
 
 #make a function to formate price_str
 def price_format(price_str: str):
