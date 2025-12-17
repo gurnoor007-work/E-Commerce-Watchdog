@@ -56,8 +56,7 @@ for product_n in range(1, len(os.listdir('raw_html')) + 1):
             LINK.append(final_url)
         except:
             LINK.append(None)
-
-print("")
+            
 print(Fore.GREEN + "->" + Style.RESET_ALL + "Names Retrieved")
 time.sleep(1)
 print(Fore.GREEN + "->" + Style.RESET_ALL + "Prices Retrieved")

@@ -14,17 +14,23 @@ chrome_options.add_argument("--headless=new")
     
 driver = webdriver.Chrome(options=chrome_options)
 
-for link in LINK:
-    if link != None:
-        driver.get(link)
-        price_elem = driver.find_element(By.CSS_SELECTOR, 'span.a-price-whole')
-        price_str_raw = price_elem.get_attribute('innerText').strip()
-        print(Fore.RED + "price: " + Style.RESET_ALL + price_str_raw)
-        price = price_format(price_str_raw.removesuffix('.'))
+print("initializing price tracking, please check result.csv for updates...")
 
-        index = LINK.index(link)
-        df.at[index, 'price'] = price
+i = 1
+while True:
+    print(Fore.GREEN + "->" + Style.RESET_ALL + f"iteration {i}")
+    for link in LINK:
+        if link != None:
+            driver.get(link)
+            price_elem = driver.find_element(By.CSS_SELECTOR, 'span.a-price-whole')
+            price_str_raw = price_elem.get_attribute('innerText').strip()
+            price = price_format(price_str_raw.removesuffix('.'))
 
-display_df_with_rich(df)
+            index = LINK.index(link)
+            df.at[index, 'price'] = price
+
+    df = df.drop('link', axis = 1)
+    df.to_csv('result.csv')
+    i+=1
 driver.close()
 
