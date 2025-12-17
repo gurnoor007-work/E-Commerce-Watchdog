@@ -13,7 +13,7 @@ time.sleep(2)
 #make a function to formate price_str
 def price_format(price_str: str):
     cleaned_string = re.sub(r'[^0-9.]', '', price_str)
-    return float(cleaned_string)
+    return int(cleaned_string)
 
 NAME = []
 PRICE = []
